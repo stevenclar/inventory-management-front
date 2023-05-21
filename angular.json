@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "5c0cac2f-ca2f-4832-93e1-fc4fbfd90560"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "podcaster": {
+    "inventoryManagement": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/podcaster",
+            "outputPath": "dist/inventoryManagement",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "podcaster:build:production"
+              "browserTarget": "inventoryManagement:build:production"
             },
             "development": {
-              "browserTarget": "podcaster:build:development"
+              "browserTarget": "inventoryManagement:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "podcaster:build"
+            "browserTarget": "inventoryManagement:build"
           }
         },
         "test": {
