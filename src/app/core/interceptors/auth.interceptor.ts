@@ -8,19 +8,20 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { StorageService } from '../services/storage/storage.service';
+import { KeysConstants } from '../constants/keys.constants';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private storageService: StorageService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<Object>> {
     let authReq = req;
-    const token = this.authService.getJwt();
-    
+    const token = this.getJwt();
+
     if (token != null) {
       authReq = this.addTokenHeader(req, token);
     }
@@ -28,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((error) => {
         if (error.status === 401) {
-          this.authService.logout();
+          this.clearJwt();
         }
         return throwError(error);
       })
@@ -41,5 +42,13 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${token}`,
       },
     });
+  }
+
+  private getJwt() {
+    return this.storageService.getItem(KeysConstants.JWT);
+  }
+
+  private clearJwt() {
+    return this.storageService.removeItem(KeysConstants.JWT);
   }
 }

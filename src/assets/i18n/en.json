@@ -4,6 +4,12 @@
     "previous": "Previous",
     "next": "Next"
   },
+  "error": {
+    "invalidCredentials": "Invalid credentials.",
+    "emailAlreadyExists ": "Email already exist.",
+    "internalServerError": "Internal server error.",
+    "nitAlreadyExists": "NIT already exist."
+  },
   "form": {
     "errorMessages": {
       "required": "This field is required.",
