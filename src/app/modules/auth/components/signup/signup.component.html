@@ -18,161 +18,44 @@
         >
           <div class="md:flex md:flex-row">
             <div class="md:basis-1/2 md:pr-2">
-              <label
-                for="firstName"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                [ngClass]="{
-                  'text-red-500':
-                    alreadySubmitted &&
-                    firstName.errors &&
-                    (firstName.dirty || firstName.touched)
-                }"
-                >{{ "auth.signUp.firstName" | translate }}</label
-              >
-              <input
-                type="firstName"
-                name="firstName"
-                id="firstName"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
-                placeholder="myname"
-                formControlName="firstName"
-                [ngClass]="{
-                  'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
-                    alreadySubmitted &&
-                    firstName.errors &&
-                    (firstName.dirty || firstName.touched)
-                }"
-              />
-              <div *ngIf="alreadySubmitted">
-                <div
-                  *appErrorValidation="firstName; let error = error"
-                  class="text-sm text-red-500"
-                >
-                  {{ error }}
-                </div>
-              </div>
+              <app-input
+                [alreadySubmitted]="alreadySubmitted"
+                [control]="firstName"
+                controlName="firstName"
+                labelText="auth.signUp.firstName"
+                type="text"
+                placeHolder="firstName"
+              ></app-input>
             </div>
             <div class="pt-3 md:basis-1/2 md:pl-2 md:pt-0">
-              <label
-                for="lastName"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                [ngClass]="{
-                  'text-red-500':
-                    alreadySubmitted &&
-                    lastName.errors &&
-                    (lastName.dirty || lastName.touched)
-                }"
-                >{{ "auth.signUp.lastName" | translate }}</label
-              >
-              <input
-                type="lastName"
-                name="lastName"
-                id="lastName"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
-                placeholder="lastName"
-                formControlName="lastName"
-                [ngClass]="{
-                  'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
-                    alreadySubmitted &&
-                    lastName.errors &&
-                    (lastName.dirty || lastName.touched)
-                }"
-              />
-              <div *ngIf="alreadySubmitted">
-                <div
-                  *appErrorValidation="lastName; let error = error"
-                  class="text-sm text-red-500"
-                >
-                  {{ error }}
-                </div>
-              </div>
+              <app-input
+                [alreadySubmitted]="alreadySubmitted"
+                [control]="lastName"
+                controlName="lastName"
+                labelText="auth.signUp.lastName"
+                type="text"
+                placeHolder="lastName"
+              ></app-input>
             </div>
           </div>
-          <div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              [ngClass]="{
-                'text-red-500':
-                  alreadySubmitted &&
-                  email.errors &&
-                  (email.dirty || email.touched)
-              }"
-              >{{ "auth.signUp.email" | translate }}</label
-            >
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
-              placeholder="name@company.com"
-              formControlName="email"
-              [ngClass]="{
-                'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
-                  alreadySubmitted &&
-                  email.errors &&
-                  (email.dirty || email.touched)
-              }"
-            />
-            <div *ngIf="alreadySubmitted">
-              <div
-                *appErrorValidation="email; let error = error"
-                class="text-sm text-red-500"
-              >
-                {{ error }}
-              </div>
-            </div>
-          </div>
-          <div>
-            <label
-              for="password"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              [ngClass]="{
-                'text-red-500':
-                  alreadySubmitted &&
-                  password.errors &&
-                  (password.dirty || password.touched)
-              }"
-            >
-              {{ "auth.signUp.password" | translate }}
-            </label>
-            <div class="relative">
-              <input
-                [type]="isPasswordVisible ? 'text' : 'password'"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
-                formControlName="password"
-                [ngClass]="{
-                  'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
-                    alreadySubmitted &&
-                    password.errors &&
-                    (password.dirty || password.touched)
-                }"
-              />
-              <fa-icon
-                class="cursor-pointer absolute top-2.5 right-3"
-                *ngIf="isPasswordVisible"
-                [icon]="faOpenEye"
-                (click)="togglePasswordVisibility()"
-              ></fa-icon>
-              <fa-icon
-                class="cursor-pointer absolute top-2.5 right-3"
-                *ngIf="!isPasswordVisible"
-                [icon]="faCloseEye"
-                (click)="togglePasswordVisibility()"
-              ></fa-icon>
-            </div>
-            <div *ngIf="alreadySubmitted">
-              <div
-                *appErrorValidation="password; let error = error"
-                class="text-sm text-red-500"
-              >
-                {{ error }}
-              </div>
-            </div>
-          </div>
+          <app-input
+            [alreadySubmitted]="alreadySubmitted"
+            [control]="email"
+            controlName="email"
+            labelText="auth.signUp.email"
+            type="text"
+            placeHolder="name@company.com"
+            classWrapper="my-4"
+          ></app-input>
+          <app-input
+            [alreadySubmitted]="alreadySubmitted"
+            [control]="password"
+            controlName="password"
+            labelText="auth.signUp.password"
+            type="password"
+            placeHolder="••••••••"
+            classWrapper="mb-2"
+          ></app-input>
           <div>
             <label
               for="confirmPassword"
@@ -190,7 +73,7 @@
             </label>
             <div class="relative">
               <input
-                [type]="isPasswordVisible ? 'text' : 'password'"
+                [type]="'password'"
                 name="confirmPassword"
                 id="confirmPassword"
                 placeholder="••••••••"

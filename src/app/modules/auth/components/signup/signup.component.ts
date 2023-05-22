@@ -5,10 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import {
-  matchValidator,
   toAngularValidator,
 } from 'src/app/utils/match-validator';
 
@@ -18,9 +16,6 @@ import {
 })
 export class SignupComponent {
   alreadySubmitted: boolean = false;
-  isPasswordVisible: boolean = false;
-  faOpenEye = faEye;
-  faCloseEye = faEyeSlash;
 
   signupForm: FormGroup;
 
@@ -31,46 +26,39 @@ export class SignupComponent {
   confirmPassword: FormControl;
   termsAndCondition: FormControl;
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly formBuilder: FormBuilder
-  ) {
+  constructor(private readonly authService: AuthService) {
     this.firstName = new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-    ])
+    ]);
     this.lastName = new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-    ])
-    this.email = new FormControl('', [Validators.required, Validators.email]),
-    this.password = new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ])
+    ]);
+    (this.email = new FormControl('', [Validators.required, Validators.email])),
+      (this.password = new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]));
     this.confirmPassword = new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-    ])
-    this.termsAndCondition = new FormControl(false),
-    this.signupForm = new FormGroup(
-      {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword,
-        termsAndCondition: this.termsAndCondition,
-      },
-      toAngularValidator(
-        'match',
-        () => this.password?.value === this.confirmPassword?.value
-      )
-    );
-  }
-
-  togglePasswordVisibility() {
-    this.isPasswordVisible = !this.isPasswordVisible;
+    ]);
+    (this.termsAndCondition = new FormControl(false)),
+      (this.signupForm = new FormGroup(
+        {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+          termsAndCondition: this.termsAndCondition,
+        },
+        toAngularValidator(
+          'match',
+          () => this.password?.value === this.confirmPassword?.value
+        )
+      ));
   }
 
   get hasMatchError() {
