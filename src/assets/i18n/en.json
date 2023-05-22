@@ -80,5 +80,22 @@
       "cancel": "Cancel",
       "delete": "Delete"
     }
+  },
+  "product": {
+    "id": "ID",
+    "name": "Name",
+    "price": "Price",
+    "measure": "Measure",
+    "description": "Description",
+    "actions": "Actions",
+    "create": "Create product",
+    "edit": "Edit product {{id}}",
+    "updated": "Product {{id}} was successfully edited.",
+    "delete": {
+      "title": "Delete product",
+      "message": "Are you sure you want to delete this product?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   }
 }

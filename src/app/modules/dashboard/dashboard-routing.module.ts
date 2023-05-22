@@ -14,6 +14,13 @@ const routes: Routes = [
             (m) => m.CompanyModule
           ),
       },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('src/app/modules/product/product.module').then(
+            (m) => m.ProductModule
+          ),
+      },
     ],
   },
 ];

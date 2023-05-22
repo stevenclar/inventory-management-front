@@ -1,0 +1,71 @@
+<section class="bg-slate-100">
+  <div class="flex flex-col items-center justify-center">
+    <div
+      class="w-full bg-white rounded-xl shadow-xl md:mt-0 sm:max-w-2xl xl:p-0"
+    >
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1
+          class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
+        >
+          {{ "product.edit" | translate : { id: product.id } }}
+        </h1>
+        <form
+          [formGroup]="productForm"
+          class="space-y-4 md:space-y-6"
+          (submit)="onSubmit()"
+        >
+          <div>
+            <app-input
+              [control]="name"
+              [alreadySubmitted]="alreadySubmitted"
+              controlName="name"
+              labelText="product.name"
+              type="text"
+              placeHolder="myCompany"
+            ></app-input>
+          </div>
+          <div class="md:flex md:space-x-4 space-y-4 md:space-y-0">
+            <div>
+              <app-input
+                [control]="price"
+                [alreadySubmitted]="alreadySubmitted"
+                controlName="price"
+                labelText="product.price"
+                type="text"
+                placeHolder="100000"
+              ></app-input>
+            </div>
+            <div>
+              <app-input
+                [control]="measure"
+                [alreadySubmitted]="alreadySubmitted"
+                controlName="measure"
+                labelText="product.measure"
+                type="text"
+                placeHolder="Unit"
+              ></app-input>
+            </div>
+          </div>
+          <div>
+            <app-input
+              [control]="description"
+              [alreadySubmitted]="alreadySubmitted"
+              controlName="description"
+              labelText="product.description"
+              type="textarea"
+              placeHolder="Exercitation qui ad aliquip enim in est culpa officia labore quis nulla."
+            ></app-input>
+          </div>
+          <app-button
+            color="primary"
+            type="submit"
+            [disabled]="productForm.invalid"
+            text="common.edit"
+            [isFullWidth]="true"
+            [isLoading]="isLoading"
+          ></app-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
