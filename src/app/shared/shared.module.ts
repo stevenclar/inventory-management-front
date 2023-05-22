@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ErrorValidationDirective } from './directives/error-validation/error-validation.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InputComponent } from './components/input/input.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { InputComponent } from './components/input/input.component';
     FooterComponent,
     FilterByPipe,
     ErrorValidationDirective,
+    ButtonComponent,
     InputComponent,
   ],
   imports: [
@@ -43,6 +45,7 @@ import { InputComponent } from './components/input/input.component';
     ErrorValidationDirective,
     MatDialogModule,
     InputComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}
