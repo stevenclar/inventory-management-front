@@ -1,9 +1,9 @@
-<section class="login bg-slate-300">
+<section class="login bg-slate-100">
   <div
     class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-20"
   >
     <div
-      class="w-full bg-white rounded-xl shadow-xl md:mt-0 sm:max-w-md xl:p-0 border-4 border-secondary"
+      class="w-full bg-white rounded-xl shadow-xl md:mt-0 sm:max-w-md xl:p-0"
     >
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1
@@ -123,7 +123,7 @@
           <p class="text-sm font-light text-gray-500">
             {{ "auth.login.dontHaveAccount" | translate }}
             <a
-              [routerLink]="['/auth/signUp']"
+              [routerLink]="['/auth/signup']"
               class="font-medium text-primary-600 hover:underline"
               >{{ "auth.login.signUp" | translate }}</a
             >

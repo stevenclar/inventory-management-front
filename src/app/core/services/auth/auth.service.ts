@@ -33,6 +33,23 @@ export class AuthService {
       );
   }
 
+  signup(firstName: string, lastName: string, email: string, password: string) {
+    return this.httpClient
+      .post(`${environment.apiUrl}${ApiConstants.SIGNUP}`, {
+        firstName,
+        lastName,
+        email,
+        password,
+      })
+      .pipe(
+        map((response: any) => {
+          this.storageService.setItem(KeysConstants.JWT, response.token);
+          this.isLoggedIn = true;
+          return response;
+        })
+      );
+  }
+
   logout() {
     this.storageService.removeItem(KeysConstants.JWT);
     this.isLoggedIn = false;

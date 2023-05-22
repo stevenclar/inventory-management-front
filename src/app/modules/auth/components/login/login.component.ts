@@ -54,6 +54,7 @@ export class LoginComponent {
           this.rememberMe?.value as boolean
         )
         .subscribe((response) => {
+          //redirect to dashboard page
           console.log(response);
         });
     }

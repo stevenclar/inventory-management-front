@@ -27,6 +27,21 @@
       "submit": "Sign in",
       "dontHaveAccount": "Don't have an account?",
       "signUp": "Sign up"
+    },
+    "signUp": {
+      "title": "Create and account",
+      "firstName": "Your Name",
+      "lastName": "Your Last name",
+      "email": "Your Email",
+      "password": "Your Password",
+      "confirmPassword": "Confirm password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "termsAndCondition": "I agree to the terms and conditions",
+      "submit": "Create an account",
+      "haveAccount": "Already have an account?",
+      "login": "Login here",
+      "confirmPasswordMatch": "Passwords do not match."
     }
   }
 }
