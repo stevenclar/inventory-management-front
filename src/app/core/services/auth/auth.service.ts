@@ -1,10 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiConstants } from '../../constants/api.constants';
 import { StorageService } from '../storage/storage.service';
 import { KeysConstants } from '../../constants/keys.constants';
+import { ERROR_KEYS } from '../../constants/error.constants';
+import { ALERT_TYPE } from '../../constants/alert.constants';
+import { AlertService } from '../alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +18,9 @@ export class AuthService {
 
   constructor(
     private readonly httpClient: HttpClient,
-    private readonly storageService: StorageService
+    private readonly storageService: StorageService,
+    private readonly alertService: AlertService,
+    private readonly translateService: TranslateService
   ) {}
 
   login(email: string, password: string, rememberMe: boolean) {
@@ -29,6 +35,12 @@ export class AuthService {
           this.storageService.setItem(KeysConstants.JWT, response.token);
           this.isLoggedIn = true;
           return response;
+        })
+      )
+      .pipe(
+        catchError((error) => {
+          this.handleError(error, ERROR_KEYS.INVALID_CREDENTIALS);
+          return throwError(() => error);
         })
       );
   }
@@ -47,6 +59,12 @@ export class AuthService {
           this.isLoggedIn = true;
           return response;
         })
+      )
+      .pipe(
+        catchError((error) => {
+          this.handleError(error, ERROR_KEYS.EMAIL_ALREADY_EXISTS);
+          return throwError(() => error);
+        })
       );
   }
 
@@ -61,15 +79,25 @@ export class AuthService {
     return { email, password };
   }
 
-  getJwt() {
-    return this.storageService.getItem(KeysConstants.JWT);
-  }
-
   checkAuthStatus(): void {
     this.httpClient
       .get(`${environment.apiUrl}${ApiConstants.ME}`)
       .subscribe(() => {
         this.isLoggedIn = true;
       });
+  }
+
+  private handleError(error: HttpErrorResponse, messageKey: string) {
+    if (error.status === 422) {
+      this.translateService.get(messageKey).subscribe((message) => {
+        this.alertService.showToast(message, 'top', ALERT_TYPE.ERROR);
+      });
+    } else {
+      this.alertService.showToast(
+        this.translateService.instant(ERROR_KEYS.INTERNAL_SERVER_ERROR),
+        'top',
+        ALERT_TYPE.ERROR
+      );
+    }
   }
 }
