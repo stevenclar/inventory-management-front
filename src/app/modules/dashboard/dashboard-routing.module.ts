@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { CompanyComponent } from './components/company/company.component';
 
 const routes: Routes = [
   {
@@ -10,7 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: 'companies',
-        component: CompanyComponent,
+        loadChildren: () =>
+          import('src/app/modules/company/company.module').then(
+            (m) => m.CompanyModule
+          ),
       },
     ],
   },

@@ -4,7 +4,9 @@
     "previous": "Previous",
     "next": "Next",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "create": "Create"
   },
   "error": {
     "invalidCredentials": "Invalid credentials.",

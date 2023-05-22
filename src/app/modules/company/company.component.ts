@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { CreateCompanyComponent } from '../create-company/create-company.component';
 import { CompanyService } from 'src/app/core/services/company/company.service';
 import Company from 'src/app/core/interfaces/company';
 import { AlertService } from 'src/app/core/services/alert/alert.service';
 import { TranslateService } from '@ngx-translate/core';
-import { EditCompanyComponent } from '../edit-company/edit-company.component';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 
 const LIMIT = 5;
 
