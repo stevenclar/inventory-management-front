@@ -2,7 +2,9 @@
   "common": {
     "readMore": "Read more",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "error": {
     "invalidCredentials": "Invalid credentials.",
@@ -58,14 +60,23 @@
     "profile": "Profile",
     "settings": "Settings",
     "companies": "Companies",
-    "products": "Products",
-    "company": {
-      "nit": "NIT",
-      "name": "Name",
-      "address": "Address",
-      "phone": "Phone",
-      "actions": "Actions",
-      "create": "Create company"
+    "products": "Products"
+  },
+  "company": {
+    "nit": "NIT",
+    "name": "Name",
+    "address": "Address",
+    "phone": "Phone",
+    "description": "Description",
+    "actions": "Actions",
+    "create": "Create company",
+    "edit": "Edit company {{nit}}",
+    "updated": "Company {{nit}} was successfully edited.",
+    "delete": {
+      "title": "Delete company",
+      "message": "Are you sure you want to delete this company?",
+      "cancel": "Cancel",
+      "delete": "Delete"
     }
   }
 }
