@@ -9,6 +9,8 @@
   >
   <div class="relative">
     <input
+      matInput
+      *ngIf="!isTextAreaField"
       [type]="inputType"
       [name]="controlName"
       [id]="controlName"
@@ -20,6 +22,20 @@
           isInvalid
       }"
     />
+    <textarea
+      *ngIf="isTextAreaField"
+      [name]="controlName"
+      [id]="controlName"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
+      [placeholder]="placeHolder"
+      [formControl]="control"
+      [ngClass]="{
+        'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
+          isInvalid
+      }"
+      rows="5"
+    >
+    </textarea>
     <fa-icon
       class="cursor-pointer absolute top-2.5 right-3"
       *ngIf="isPasswordVisible && isPasswordField"

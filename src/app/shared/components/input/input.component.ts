@@ -5,10 +5,11 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
   @Input() alreadySubmitted: boolean = false;
-  @Input() type!: 'text' | 'password';
+  @Input() type!: 'text' | 'password' | 'textarea';
   @Input() labelText: string = 'text';
   @Input() placeHolder: string = 'text';
   @Input() control!: FormControl;
@@ -45,6 +46,10 @@ export class InputComponent implements OnInit {
 
   get isPasswordField() {
     return this.type === 'password';
+  }
+
+  get isTextAreaField() {
+    return this.type === 'textarea';
   }
 
   togglePasswordVisibility() {
