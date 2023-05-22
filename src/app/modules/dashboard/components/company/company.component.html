@@ -1,9 +1,10 @@
 <div>
   <div class="flex justify-end py-4">
     <button
+      (click)="openCreateCompanyDialog()"
       class="text-white bg-primary-600 hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-secondary"
     >
-      {{ "dashboard.company.create" | translate }}
+      {{ "company.create" | translate }}
     </button>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -11,19 +12,19 @@
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
           <th scope="col" class="px-6 py-3">
-            {{ "dashboard.company.nit" | translate }}
+            {{ "company.nit" | translate }}
           </th>
           <th scope="col" class="px-6 py-3">
-            {{ "dashboard.company.name" | translate }}
+            {{ "company.name" | translate }}
           </th>
           <th scope="col" class="px-6 py-3">
-            {{ "dashboard.company.address" | translate }}
+            {{ "company.address" | translate }}
           </th>
           <th scope="col" class="px-6 py-3">
-            {{ "dashboard.company.phone" | translate }}
+            {{ "company.phone" | translate }}
           </th>
           <th scope="col" class="px-6 py-3">
-            {{ "dashboard.company.actions" | translate }}
+            {{ "company.actions" | translate }}
           </th>
         </tr>
       </thead>
@@ -42,10 +43,16 @@
           <td class="px-6 py-4">{{ company.address }}</td>
           <td class="px-6 py-4">{{ company.phone }}</td>
           <td class="px-6 py-4 flex justify-around">
-            <button class="text-primary text-xl hover:text-secondary">
+            <button
+              class="text-primary text-xl hover:text-secondary"
+              (click)="openEditCompanyDialog(company)"
+            >
               <fa-icon [icon]="faEdit"></fa-icon>
             </button>
-            <button class="text-primary text-xl hover:text-red-600">
+            <button
+              class="text-primary text-xl hover:text-red-600"
+              (click)="deleteCompany(company.nit)"
+            >
               <fa-icon [icon]="faRemove"></fa-icon>
             </button>
           </td>
@@ -56,33 +63,22 @@
       class="flex items-center justify-end px-4 py-2"
       aria-label="Table navigation"
     >
-      <ul class="inline-flex items-center -space-x-px">
+      <ul class="inline-flex items-center space-x-3">
         <li>
-          <button
+          <app-button
+            color="secondary"
             [disabled]="disablePreviousPage"
             (click)="previousPage()"
-            class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-secondary hover:text-white mr-2"
-            [ngClass]="{
-              'cursor-not-allowed bg-gray-200 hover:bg-gray-200 hover:text-gray-500':
-                disablePreviousPage
-            }"
-          >
-            <fa-icon></fa-icon>
-            <span>{{ "common.previous" | translate }}</span>
-          </button>
+            text="common.previous"
+          ></app-button>
         </li>
         <li>
-          <button
+          <app-button
+            color="secondary"
             [disabled]="!hasNextPage"
             (click)="nextPage()"
-            class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-secondary hover:text-white"
-            [ngClass]="{
-              'cursor-not-allowed bg-gray-200 hover:bg-gray-200 hover:text-gray-500':
-                !hasNextPage
-            }"
-          >
-            <span>{{ "common.next" | translate }}</span>
-          </button>
+            text="common.next"
+          ></app-button>
         </li>
       </ul>
     </nav>
