@@ -16,79 +16,23 @@
           (ngSubmit)="onSubmit()"
           class="space-y-4 md:space-y-6"
         >
-          <div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              [ngClass]="{
-                'text-red-500':
-                  email?.errors && (email?.dirty || email?.touched)
-              }"
-              >{{ "auth.login.email" | translate }}</label
-            >
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="name@company.com"
-              formControlName="email"
-              [ngClass]="{
-                'border-red-500 bg-red-50 focus:ring-red-600 focus:border-red-600':
-                  email?.errors && (email?.dirty || email?.touched)
-              }"
-            />
-            <div
-              *appErrorValidation="email; let error = error"
-              class="text-sm text-red-500"
-            >
-              {{ error }}
-            </div>
-          </div>
-          <div>
-            <label
-              for="password"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              [ngClass]="{
-                'text-red-500':
-                  password?.errors && (password?.dirty || password?.touched)
-              }"
-            >
-              {{ "auth.login.password" | translate }}
-            </label>
-            <div class="relative">
-              <input
-                [type]="isPasswordVisible ? 'text' : 'password'"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-                formControlName="password"
-                [ngClass]="{
-                  'border-red-500 bg-red-50 focus:ring-red-600 focus:border-red-600':
-                    password?.errors && (password?.dirty || password?.touched)
-                }"
-              />
-              <fa-icon
-                class="cursor-pointer absolute top-2.5 right-3"
-                *ngIf="isPasswordVisible"
-                [icon]="faOpenEye"
-                (click)="togglePasswordVisibility()"
-              ></fa-icon>
-              <fa-icon
-                class="cursor-pointer absolute top-2.5 right-3"
-                *ngIf="!isPasswordVisible"
-                [icon]="faCloseEye"
-                (click)="togglePasswordVisibility()"
-              ></fa-icon>
-            </div>
-            <div
-              *appErrorValidation="password; let error = error"
-              class="text-sm text-red-500"
-            >
-              {{ error }}
-            </div>
-          </div>
+          <app-input
+            [alreadySubmitted]="alreadySubmitted"
+            [control]="email"
+            controlName="email"
+            labelText="auth.login.email"
+            type="text"
+            placeHolder="name@company.com"
+            classWrapper="mb-4"
+          ></app-input>
+          <app-input
+            [alreadySubmitted]="alreadySubmitted"
+            [control]="password"
+            controlName="password"
+            labelText="auth.login.password"
+            type="password"
+            placeHolder="••••••••"
+          ></app-input>
           <div class="flex items-center justify-between">
             <div class="flex items-start">
               <div class="flex items-center h-5">

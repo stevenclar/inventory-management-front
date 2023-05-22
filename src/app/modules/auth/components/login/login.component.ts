@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class LoginComponent {
   alreadySubmitted: boolean = false;
-  isPasswordVisible: boolean = false;
   faOpenEye = faEye;
   faCloseEye = faEyeSlash;
 
@@ -29,19 +28,15 @@ export class LoginComponent {
   }
 
   get email() {
-    return this.loginForm.get('email');
+    return this.loginForm.get('email') as FormControl;
   }
 
-  get password() {
-    return this.loginForm.get('password');
+  get password(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 
   get rememberMe() {
-    return this.loginForm.get('rememberMe');
-  }
-
-  togglePasswordVisibility() {
-    this.isPasswordVisible = !this.isPasswordVisible;
+    return this.loginForm.get('rememberMe') as FormControl;
   }
 
   onSubmit() {

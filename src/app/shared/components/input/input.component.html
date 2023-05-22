@@ -7,18 +7,32 @@
     }"
     >{{ labelText | translate }}</label
   >
-  <input
-    [type]="type"
-    [name]="controlName"
-    [id]="controlName"
-    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
-    [placeholder]="placeHolder"
-    [formControl]="control"
-    [ngClass]="{
-      'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
-        isInvalid
-    }"
-  />
+  <div class="relative">
+    <input
+      [type]="inputType"
+      [name]="controlName"
+      [id]="controlName"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
+      [placeholder]="placeHolder"
+      [formControl]="control"
+      [ngClass]="{
+        'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
+          isInvalid
+      }"
+    />
+    <fa-icon
+      class="cursor-pointer absolute top-2.5 right-3"
+      *ngIf="isPasswordVisible && isPasswordField"
+      [icon]="faOpenEye"
+      (click)="togglePasswordVisibility()"
+    ></fa-icon>
+    <fa-icon
+      class="cursor-pointer absolute top-2.5 right-3"
+      *ngIf="!isPasswordVisible && isPasswordField"
+      [icon]="faCloseEye"
+      (click)="togglePasswordVisibility()"
+    ></fa-icon>
+  </div>
   <div *ngIf="alreadySubmitted">
     <div
       *appErrorValidation="control; let error = error"
