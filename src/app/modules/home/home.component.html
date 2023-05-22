@@ -1,0 +1,30 @@
+<div class="pt-20">
+  <div class="flex justify-center">
+    <h3 class="text-2xl font-bold text-center xl:w-1/2">
+      {{ "home.message" | translate }}
+    </h3>
+  </div>
+  <div class="pt-10 flex justify-center">
+    <div
+      class="border bg-white rounded-2xl px-6 py-2 w-96 flex focus-within:ring-2 focus-within:ring-secondary"
+    >
+      <fa-icon [icon]="faSearch" class="text-gray-400 pr-4"></fa-icon>
+      <input
+        class="grow border-0 ring-0 focus:ring-0 focus:outline-none"
+        type="text"
+        [placeholder]="searchPlaceholder"
+        [(ngModel)]="searchValue"
+      />
+    </div>
+  </div>
+  <div class="pt-10">
+    <h3 class="text-xl font-bold">
+      {{ "home.list" | translate }}
+    </h3>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 pt-8 mx-10 sm:mx-0 justify-items-center pb-10"
+  >
+    <app-company-card *ngFor="let company of companies" [company]="company" />
+  </div>
+</div>
