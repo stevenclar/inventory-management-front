@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ErrorValidationDirective } from './directives/error-validation/error-validation.directive';
+import { MatDialogModule } from '@angular/material/dialog';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { ErrorValidationDirective } from './directives/error-validation/error-va
     FooterComponent,
     FilterByPipe,
     ErrorValidationDirective,
+    InputComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import { ErrorValidationDirective } from './directives/error-validation/error-va
     RouterModule,
     HttpClientModule,
     TranslateModule,
+    MatDialogModule,
   ],
   exports: [
     NavbarComponent,
@@ -37,6 +41,8 @@ import { ErrorValidationDirective } from './directives/error-validation/error-va
     RouterModule,
     FilterByPipe,
     ErrorValidationDirective,
+    MatDialogModule,
+    InputComponent,
   ],
 })
 export class SharedModule {}

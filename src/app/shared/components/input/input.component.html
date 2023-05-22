@@ -1,0 +1,30 @@
+<div [class]="classWrapper">
+  <label
+    [for]="controlName"
+    class="block mb-2 text-sm font-medium text-gray-900"
+    [ngClass]="{
+      'text-red-500': isInvalid
+    }"
+    >{{ labelText | translate }}</label
+  >
+  <input
+    [type]="type"
+    [name]="controlName"
+    [id]="controlName"
+    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 focus:ring-1 focus:outline-none"
+    [placeholder]="placeHolder"
+    [formControl]="control"
+    [ngClass]="{
+      'border-red-500 bg-red-50 focus:ring-red-500 focus:border-red-600':
+        isInvalid
+    }"
+  />
+  <div *ngIf="alreadySubmitted">
+    <div
+      *appErrorValidation="control; let error = error"
+      class="text-sm text-red-500"
+    >
+      {{ error }}
+    </div>
+  </div>
+</div>
