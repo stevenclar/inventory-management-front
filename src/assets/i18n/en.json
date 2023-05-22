@@ -1,6 +1,8 @@
 {
   "common": {
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "previous": "Previous",
+    "next": "Next"
   },
   "form": {
     "errorMessages": {
@@ -50,6 +52,14 @@
     "profile": "Profile",
     "settings": "Settings",
     "companies": "Companies",
-    "products": "Products"
+    "products": "Products",
+    "company": {
+      "nit": "NIT",
+      "name": "Name",
+      "address": "Address",
+      "phone": "Phone",
+      "actions": "Actions",
+      "create": "Create company"
+    }
   }
 }

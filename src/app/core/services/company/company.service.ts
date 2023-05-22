@@ -16,4 +16,12 @@ export class CompanyService {
       params,
     });
   }
+
+  getMyCompanies(paginationOptions?: paginationRequest) {
+    const params = paginationOptions ? paginationOptions : {};
+    return this.http.get(`${environment.apiUrl}${ApiConstants.MY_COMPANIES}`, {
+      params,
+    });
+  }
+  
 }
