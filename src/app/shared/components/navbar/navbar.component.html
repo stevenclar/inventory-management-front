@@ -6,7 +6,7 @@
       <img src="assets/images/logo.webp" alt="Logo" class="h-8 mr-2" />
     </a>
     <div *ngIf="isLoggedIn; else loginButton">
-      <button (click)="goToProfile()">Profile</button>
+      <button [routerLink]="['/dashboard']">Profile</button>
     </div>
 
     <ng-template #loginButton>

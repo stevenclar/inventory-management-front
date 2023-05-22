@@ -43,5 +43,13 @@
       "login": "Login here",
       "confirmPasswordMatch": "Passwords do not match."
     }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "companies": "Companies",
+    "products": "Products"
   }
 }
