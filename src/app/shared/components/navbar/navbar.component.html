@@ -10,7 +10,7 @@
     </div>
 
     <ng-template #loginButton>
-      <button (click)="goToLogin()">Login</button>
+      <button [routerLink]="['/auth/login']">Login</button>
     </ng-template>
   </div>
 </nav>

@@ -2,10 +2,31 @@
   "common": {
     "readMore": "Read more"
   },
+  "form": {
+    "errorMessages": {
+      "required": "This field is required.",
+      "email": "Please enter a valid email address.",
+      "minlength": "This field must be at least {{requiredLength}} characters long.",
+      "maxlength": "This field cannot be longer than {{requiredLength}} characters.",
+      "pattern": "Please enter a valid value.",
+      "match": "The passwords do not match."
+    }
+  },
   "home": {
     "message": "Discover top-notch companies in our community! Explore their unique products and services. Join us and be part of collective success. Sign up today!",
     "list": "Companies that are already part of our community.",
     "searchPlaceholder": "Search companies..."
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "email": "Your Email",
+      "password": "Your Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "dontHaveAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    }
   }
-
 }
