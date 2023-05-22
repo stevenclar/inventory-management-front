@@ -15,9 +15,7 @@ export class AuthService {
   constructor(
     private readonly httpClient: HttpClient,
     private readonly storageService: StorageService
-  ) {
-    this.checkAuthStatus();
-  }
+  ) {}
 
   login(email: string, password: string, rememberMe: boolean) {
     return this.httpClient
@@ -46,7 +44,11 @@ export class AuthService {
     return { email, password };
   }
 
-  private checkAuthStatus(): void {
+  getJwt() {
+    return this.storageService.getItem(KeysConstants.JWT);
+  }
+
+  checkAuthStatus(): void {
     this.httpClient
       .get(`${environment.apiUrl}${ApiConstants.ME}`)
       .subscribe(() => {
