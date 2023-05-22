@@ -25,6 +25,10 @@
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 pt-8 mx-10 sm:mx-0 justify-items-center pb-10"
   >
-    <app-company-card *ngFor="let company of companies" [company]="company" />
+    <app-company-card
+      *ngFor="let company of companies | filterBy: searchValue: 'name': 'description'"
+      [company]="company"
+      class="w-full"
+    />
   </div>
 </div>
