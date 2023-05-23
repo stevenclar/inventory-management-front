@@ -124,23 +124,20 @@
                 }}</label>
               </div>
             </div>
-            <a
+            <!-- <a
               href="#"
               class="text-sm font-medium text-primary-600 hover:underline"
               >{{ "auth.signUp.forgotPassword" | translate }}</a
-            >
+            > -->
           </div>
-          <button
-            type="submit"
+          <app-button
+            color="primary"
             [disabled]="signupForm.invalid || !termsAndCondition.value"
-            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-secondary"
-            [ngClass]="{
-              'opacity-20 cursor-not-allowed':
-                signupForm.invalid || !termsAndCondition.value
-            }"
-          >
-            {{ "auth.signUp.submit" | translate }}
-          </button>
+            [isLoading]="isLoading"
+            [isFullWidth]="true"
+            type="submit"
+            text="auth.signUp.submit"
+          ></app-button>
           <p class="text-sm font-light text-gray-500">
             {{ "auth.signUp.haveAccount" | translate }}
             <a

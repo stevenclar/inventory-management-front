@@ -5,10 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import {
-  toAngularValidator,
-} from 'src/app/utils/match-validator';
+import { toAngularValidator } from 'src/app/utils/match-validator';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +15,7 @@ import {
 })
 export class SignupComponent {
   alreadySubmitted: boolean = false;
+  isLoading: boolean = false;
 
   signupForm: FormGroup;
 
@@ -26,7 +26,10 @@ export class SignupComponent {
   confirmPassword: FormControl;
   termsAndCondition: FormControl;
 
-  constructor(private readonly authService: AuthService) {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {
     this.firstName = new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -69,6 +72,7 @@ export class SignupComponent {
     this.alreadySubmitted = true;
     if (this.signupForm.valid) {
       if (this.termsAndCondition?.value) {
+        this.isLoading = true;
         this.authService
           .signup(
             this.firstName?.value as string,
@@ -76,10 +80,14 @@ export class SignupComponent {
             this.email?.value as string,
             this.password?.value as string
           )
-          .subscribe((response) => {
-            //redirect to dashboard page
-            console.log(response);
-          });
+          .subscribe(
+            () => {
+              this.isLoading = false;
+              this.router.navigate(['/dashboard']);
+            },
+            () => (this.isLoading = false),
+            () => (this.isLoading = false)
+          );
       }
     }
   }
