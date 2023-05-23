@@ -57,7 +57,7 @@ export class LoginComponent {
         .subscribe(
           () => {
             this.isLoading = false;
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/companies']);
           },
           () => (this.isLoading = false),
           () => (this.isLoading = false)
