@@ -7,7 +7,9 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "edit": "Edit",
-    "create": "Create"
+    "create": "Create",
+    "email": "Email",
+    "send": "Send"
   },
   "error": {
     "invalidCredentials": "Invalid credentials.",
@@ -107,6 +109,9 @@
     "productName": "Product name",
     "productPrice": "Product price",
     "availableQuantity": "Available quantity",
-    "product": "Product"
+    "product": "Product",
+    "sendPdfToEmail": {
+      "title": "Send PDF to email"
+    }
   }
 }

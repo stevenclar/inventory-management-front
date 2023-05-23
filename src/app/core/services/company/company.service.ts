@@ -97,11 +97,21 @@ export class CompanyService {
 
   downloadInventory(nit: string) {
     return this.http
+      .get(`${environment.apiUrl}${ApiConstants.COMPANIES}/${nit}/download`, {
+        responseType: 'blob',
+      })
+      .pipe(
+        catchError((error) => {
+          this.handleError(error, ERROR_KEYS.INTERNAL_SERVER_ERROR);
+          return throwError(() => error);
+        })
+      );
+  }
+
+  sendInventoryToEmail(nit: string, email: string) {
+    return this.http
       .get(
-        `${environment.apiUrl}${ApiConstants.COMPANIES}/${nit}/download`,
-        {
-          responseType: 'blob',
-        }
+        `${environment.apiUrl}${ApiConstants.COMPANIES}/${nit}/${email}/send-to-email`
       )
       .pipe(
         catchError((error) => {

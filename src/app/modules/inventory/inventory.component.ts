@@ -11,6 +11,7 @@ import { map, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CompanyService } from 'src/app/core/services/company/company.service';
 import Company from 'src/app/core/interfaces/company';
+import { SendPdfToEmailComponent } from './components/send-pdf-to-email/send-pdf-to-email.component';
 
 const LIMIT = 5;
 
@@ -117,5 +118,11 @@ export class InventoryComponent implements OnInit {
         a.download = 'inventories.pdf';
         a.click();
       });
+  }
+
+  sendInventoriesToEmail() {
+    this.matDialog.open(SendPdfToEmailComponent, {
+      data: this.companyNit,
+    });
   }
 }
