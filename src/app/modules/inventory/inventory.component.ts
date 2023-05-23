@@ -106,4 +106,16 @@ export class InventoryComponent implements OnInit {
         }
       });
   }
+
+  downloadInventories() {
+    this.companyService
+      .downloadInventory(this.companyNit)
+      .subscribe((response) => {
+        const url = window.URL.createObjectURL(response);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'inventories.pdf';
+        a.click();
+      });
+  }
 }

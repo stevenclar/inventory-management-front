@@ -95,6 +95,22 @@ export class CompanyService {
       );
   }
 
+  downloadInventory(nit: string) {
+    return this.http
+      .get(
+        `${environment.apiUrl}${ApiConstants.COMPANIES}/${nit}/download`,
+        {
+          responseType: 'blob',
+        }
+      )
+      .pipe(
+        catchError((error) => {
+          this.handleError(error, ERROR_KEYS.INTERNAL_SERVER_ERROR);
+          return throwError(() => error);
+        })
+      );
+  }
+
   private handleError(error: HttpErrorResponse, messageKey: string) {
     if (error.status === 422) {
       this.translateService.get(messageKey).subscribe((message) => {
