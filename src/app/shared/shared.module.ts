@@ -12,6 +12,7 @@ import { ErrorValidationDirective } from './directives/error-validation/error-va
 import { MatDialogModule } from '@angular/material/dialog';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
+import { SelectComponent } from './components/select/select.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ButtonComponent } from './components/button/button.component';
     ErrorValidationDirective,
     ButtonComponent,
     InputComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { ButtonComponent } from './components/button/button.component';
     ErrorValidationDirective,
     MatDialogModule,
     InputComponent,
+    SelectComponent,
     ButtonComponent,
   ],
 })
