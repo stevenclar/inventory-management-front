@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CompanyService } from 'src/app/core/services/company/company.service';
 import { CreateInventoryComponent } from '../create-inventory/create-inventory.component';
 import { AlertService } from 'src/app/core/services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-send-pdf-to-email',
@@ -19,7 +20,8 @@ export class SendPdfToEmailComponent {
     public dialogRef: MatDialogRef<CreateInventoryComponent>,
     @Inject(MAT_DIALOG_DATA) public nit: string,
     private readonly companyService: CompanyService,
-    private readonly alertService: AlertService
+    private readonly alertService: AlertService,
+    private readonly translateService: TranslateService
   ) {
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.sendPdfForm = new FormGroup({
@@ -33,7 +35,10 @@ export class SendPdfToEmailComponent {
       .sendInventoryToEmail(this.nit, this.email.value)
       .subscribe(
         (response) => {
-          this.alertService.showToast('common.success', 'top');
+          this.alertService.showToast(
+            this.translateService.instant('common.success'),
+            'top'
+          );
           this.isLoading = false;
           this.dialogRef.close(response);
         },
