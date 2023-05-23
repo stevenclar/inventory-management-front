@@ -39,7 +39,7 @@ export class CompanyService {
       .get(`${environment.apiUrl}${ApiConstants.COMPANIES}/${companyId}`)
       .pipe(
         catchError((error) => {
-          this.handleError(error, ERROR_KEYS.INTERNAL_SERVER_ERROR);
+          this.handleError(error, ERROR_KEYS.NOT_THE_OWNER);
           return throwError(() => error);
         })
       );
@@ -122,17 +122,16 @@ export class CompanyService {
   }
 
   private handleError(error: HttpErrorResponse, messageKey: string) {
-    if (error.status === 422) {
-      this.translateService.get(messageKey).subscribe((message) => {
-        this.alertService.showToast(message, 'top', ALERT_TYPE.ERROR);
-      });
-    } else {
-      console.error(error);
-      this.alertService.showToast(
-        this.translateService.instant(ERROR_KEYS.INTERNAL_SERVER_ERROR),
-        'top',
-        ALERT_TYPE.ERROR
-      );
+    let message = this.translateService.instant(ERROR_KEYS.INTERNAL_SERVER_ERROR);
+    if (error.status === 404) {
+      message = this.translateService.instant(ERROR_KEYS.NOT_THE_OWNER);
+    } else if (error.status === 422) {
+      message = this.translateService.instant(messageKey);
     }
+    this.alertService.showToast(
+      message,
+      'top',
+      ALERT_TYPE.ERROR
+    );
   }
 }

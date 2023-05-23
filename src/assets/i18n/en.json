@@ -15,7 +15,8 @@
     "invalidCredentials": "Invalid credentials.",
     "emailAlreadyExists ": "Email already exist.",
     "internalServerError": "Internal server error.",
-    "nitAlreadyExists": "NIT already exist."
+    "nitAlreadyExists": "NIT already exist.",
+    "notTheOwner": "You are not the owner"
   },
   "form": {
     "errorMessages": {
@@ -65,7 +66,8 @@
     "profile": "Profile",
     "settings": "Settings",
     "companies": "Companies",
-    "products": "Products"
+    "products": "Products",
+    "underConstruction": "App under construction! Coming soon to be useful. Thanks for your patience!"
   },
   "company": {
     "nit": "NIT",
