@@ -21,7 +21,9 @@ export class AuthService {
     private readonly storageService: StorageService,
     private readonly alertService: AlertService,
     private readonly translateService: TranslateService
-  ) {}
+  ) {
+    this.checkSyncAuthStatus();
+  }
 
   login(email: string, password: string, rememberMe: boolean) {
     return this.httpClient
@@ -88,6 +90,10 @@ export class AuthService {
       .subscribe(() => {
         this.isLoggedIn = true;
       });
+  }
+
+  checkSyncAuthStatus(): void {
+    this.isLoggedIn = !!this.storageService.getItem(KeysConstants.JWT);
   }
 
   private handleError(error: HttpErrorResponse, messageKey: string) {
