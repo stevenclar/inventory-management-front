@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class LoginComponent {
   alreadySubmitted: boolean = false;
+  isLoading: boolean = false;
   faOpenEye = faEye;
   faCloseEye = faEyeSlash;
 
@@ -22,7 +24,10 @@ export class LoginComponent {
     rememberMe: new FormControl(false),
   });
 
-  constructor(private readonly authService: AuthService) {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {
     const { email, password } = this.authService.getRememberedCredentials();
     this.loginForm.patchValue({ email, password, rememberMe: !!email });
   }
@@ -41,6 +46,7 @@ export class LoginComponent {
 
   onSubmit() {
     this.alreadySubmitted = true;
+    this.isLoading = true;
     if (this.loginForm.valid) {
       this.authService
         .login(
@@ -48,10 +54,14 @@ export class LoginComponent {
           this.password?.value as string,
           this.rememberMe?.value as boolean
         )
-        .subscribe((response) => {
-          //redirect to dashboard page
-          console.log(response);
-        });
+        .subscribe(
+          () => {
+            this.isLoading = false;
+            this.router.navigate(['/dashboard']);
+          },
+          () => (this.isLoading = false),
+          () => (this.isLoading = false)
+        );
     }
   }
 }

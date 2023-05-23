@@ -31,6 +31,9 @@ export class AuthService {
           if (rememberMe) {
             this.storageService.setItem(KeysConstants.EMAIL, email);
             this.storageService.setItem(KeysConstants.PASSWORD, password);
+          } else {
+            this.storageService.removeItem(KeysConstants.EMAIL);
+            this.storageService.removeItem(KeysConstants.PASSWORD);
           }
           this.storageService.setItem(KeysConstants.JWT, response.token);
           this.isLoggedIn = true;
