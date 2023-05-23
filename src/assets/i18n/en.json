@@ -2,6 +2,7 @@
   "common": {
     "readMore": "Read more",
     "previous": "Previous",
+    "actions": "Actions",
     "next": "Next",
     "cancel": "Cancel",
     "confirm": "Confirm",
@@ -97,5 +98,15 @@
       "cancel": "Cancel",
       "delete": "Delete"
     }
+  },
+  "inventory": {
+    "create": "Create inventory",
+    "edit": "Edit inventory {{id}}",
+    "download": "Download inventory",
+    "sendToEmail": "Send to email",
+    "productName": "Product name",
+    "productPrice": "Product price",
+    "availableQuantity": "Available quantity",
+    "product": "Product"
   }
 }

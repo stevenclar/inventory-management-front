@@ -7,4 +7,6 @@ export const ApiConstants = {
   MY_PRODUCTS: '/products/mine',
   COMPANIES: '/companies',
   MY_COMPANIES: '/companies/mine',
+  INVENTORIES: '/inventories',
+  MY_INVENTORIES: '/inventories/mine',
 };

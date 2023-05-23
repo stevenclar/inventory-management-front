@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { paginationRequest } from '../../interfaces/pagination';
 import { ApiConstants } from '../../constants/api.constants';
-import Company from '../../interfaces/company';
+import Inventory from '../../interfaces/inventory';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../alert/alert.service';
 import { ALERT_TYPE } from '../../constants/alert.constants';
@@ -13,17 +13,17 @@ import { catchError, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CompanyService {
+export class InventoryService {
   constructor(
     private readonly http: HttpClient,
     private readonly translateService: TranslateService,
     private readonly alertService: AlertService
   ) {}
 
-  getCompanies(paginationOptions?: paginationRequest) {
+  getInventories(paginationOptions?: paginationRequest) {
     const params = paginationOptions ? paginationOptions : {};
     return this.http
-      .get(`${environment.apiUrl}${ApiConstants.COMPANIES}`, {
+      .get(`${environment.apiUrl}${ApiConstants.INVENTORIES}`, {
         params,
       })
       .pipe(
@@ -34,21 +34,10 @@ export class CompanyService {
       );
   }
 
-  getCompany(companyId: string) {
-    return this.http
-      .get(`${environment.apiUrl}${ApiConstants.COMPANIES}/${companyId}`)
-      .pipe(
-        catchError((error) => {
-          this.handleError(error, ERROR_KEYS.INTERNAL_SERVER_ERROR);
-          return throwError(() => error);
-        })
-      );
-  }
-
-  getMyCompanies(paginationOptions?: paginationRequest) {
+  getMyInventories(paginationOptions?: paginationRequest) {
     const params = paginationOptions ? paginationOptions : {};
     return this.http
-      .get(`${environment.apiUrl}${ApiConstants.MY_COMPANIES}`, {
+      .get(`${environment.apiUrl}${ApiConstants.MY_INVENTORIES}`, {
         params,
       })
       .pipe(
@@ -59,9 +48,9 @@ export class CompanyService {
       );
   }
 
-  createCompany(company: Company) {
+  createInventory(inventory: Inventory) {
     return this.http
-      .post(`${environment.apiUrl}${ApiConstants.COMPANIES}`, company)
+      .post(`${environment.apiUrl}${ApiConstants.INVENTORIES}`, inventory)
       .pipe(
         catchError((error) => {
           this.handleError(error, ERROR_KEYS.NIT_ALREADY_EXISTS);
@@ -70,11 +59,11 @@ export class CompanyService {
       );
   }
 
-  updateCompany(companyId: string, company: Company) {
+  updateInventory(inventoryId: number, inventory: Inventory) {
     return this.http
       .patch(
-        `${environment.apiUrl}${ApiConstants.COMPANIES}/${companyId}`,
-        company
+        `${environment.apiUrl}${ApiConstants.INVENTORIES}/${inventoryId}`,
+        inventory
       )
       .pipe(
         catchError((error) => {
@@ -84,9 +73,9 @@ export class CompanyService {
       );
   }
 
-  deleteCompany(companyId: string) {
+  deleteInventory(inventoryId: number) {
     return this.http
-      .delete(`${environment.apiUrl}${ApiConstants.COMPANIES}/${companyId}`)
+      .delete(`${environment.apiUrl}${ApiConstants.INVENTORIES}/${inventoryId}`)
       .pipe(
         catchError((error) => {
           this.handleError(error, ERROR_KEYS.INTERNAL_SERVER_ERROR);

@@ -21,6 +21,13 @@ const routes: Routes = [
             (m) => m.ProductModule
           ),
       },
+      {
+        path: 'inventory',
+        loadChildren: () =>
+          import('src/app/modules/inventory/inventory.module').then(
+            (m) => m.InventoryModule
+          ),
+      },
     ],
   },
 ];

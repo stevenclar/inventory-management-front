@@ -55,6 +55,12 @@
             >
               <fa-icon [icon]="faRemove"></fa-icon>
             </button>
+            <a
+              class="text-primary cursor-pointer text-xl hover:text-green-600"
+              [routerLink]="['/dashboard/inventory', company.nit]"
+            >
+              <fa-icon [icon]="faInventory"></fa-icon>
+            </a>
           </td>
         </tr>
       </tbody>

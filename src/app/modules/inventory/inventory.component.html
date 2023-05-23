@@ -1,0 +1,88 @@
+<div>
+  <div class="flex justify-end py-4">
+    <button
+      (click)="openCreateInventoryDialog()"
+      class="text-white bg-primary-600 hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-secondary"
+    >
+      {{ "inventory.create" | translate }}
+    </button>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            {{ "inventory.id" | translate }}
+          </th>
+          <th scope="col" class="px-6 py-3">
+            {{ "inventory.productName" | translate }}
+          </th>
+          <th scope="col" class="px-6 py-3">
+            {{ "inventory.productPrice" | translate }}
+          </th>
+          <th scope="col" class="px-6 py-3">
+            {{ "inventory.availableQuantity" | translate }}
+          </th>
+          <th scope="col" class="px-6 py-3">
+            {{ "common.actions" | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="company">
+          <tr
+            class="bg-white border-b hover:bg-gray-50"
+            *ngFor="let inventory of company.inventories"
+          >
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+            >
+              {{ inventory.id }}
+            </th>
+            <td class="px-6 py-4">{{ inventory.product.name }}</td>
+            <td class="px-6 py-4">{{ inventory.product.price| currency : "$" : 'symbol' : '1.0-0' }}</td>
+            <td class="px-6 py-4">{{ inventory.availableQuantity }}</td>
+            <td class="px-6 py-4 flex justify-around">
+              <button
+                class="text-primary text-xl hover:text-secondary"
+                (click)="openEditInventoryDialog(inventory)"
+              >
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </button>
+              <button
+                class="text-primary text-xl hover:text-red-600"
+                (click)="deleteInventory(inventory.id)"
+              >
+                <fa-icon [icon]="faRemove"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <nav
+      class="flex items-center justify-end px-4 py-2"
+      aria-label="Table navigation"
+    >
+      <ul class="inline-flex items-center space-x-3">
+        <li>
+          <app-button
+            color="secondary"
+            [disabled]="disablePreviousPage"
+            (click)="previousPage()"
+            text="common.previous"
+          ></app-button>
+        </li>
+        <li>
+          <app-button
+            color="secondary"
+            [disabled]="!hasNextPage"
+            (click)="nextPage()"
+            text="common.next"
+          ></app-button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

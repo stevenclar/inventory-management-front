@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCartFlatbed, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CompanyService } from 'src/app/core/services/company/company.service';
 import Company from 'src/app/core/interfaces/company';
 import { AlertService } from 'src/app/core/services/alert/alert.service';
@@ -17,6 +17,7 @@ const LIMIT = 5;
 export class CompanyComponent implements OnInit {
   faEdit = faEdit;
   faRemove = faTrash;
+  faInventory = faCartFlatbed;
 
   companies: Company[] = [];
 
