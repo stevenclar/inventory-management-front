@@ -1,6 +1,6 @@
 # Inventory Management System
 
-Aplicación que permite gestionar el inventario de empresas y exportarlo en PDF. [Demo](http://inventory-management-revstar.s3-website-us-east-1.amazonaws.com/inventoryManagement/)
+Aplicación que permite gestionar el inventario de empresas y exportarlo en PDF. [Demo](http://inventory-management-revstar.s3-website-us-east-1.amazonaws.com/)
 
 ## Comenzando 🚀
 
