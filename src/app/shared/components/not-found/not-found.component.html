@@ -1,0 +1,23 @@
+<section class="flex items-center h-full p-16">
+  <div
+    class="container flex flex-col items-center justify-center px-5 mx-auto my-8"
+  >
+    <div class="max-w-md text-center">
+      <h2 class="mb-8 font-extrabold text-9xl">
+        <span class="sr-only">Error</span>404
+      </h2>
+      <p class="text-2xl font-semibold md:text-3xl">
+        {{ "notFound.title" | translate }}
+      </p>
+      <p class="mt-4 mb-8">
+        {{ "notFound.message" | translate }}
+      </p>
+      <a
+        rel="noopener noreferrer"
+        [routerLink]="['/']"
+        class="px-8 py-3 font-semibold rounded border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition duration-300 ease-in-out"
+        >{{ "notFound.goToBack" | translate }}</a
+      >
+    </div>
+  </div>
+</section>

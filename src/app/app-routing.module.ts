@@ -1,6 +1,7 @@
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
     canActivate: [() => inject(AuthGuard).canActivate()],
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: NotFoundComponent,
   },
 ];
 

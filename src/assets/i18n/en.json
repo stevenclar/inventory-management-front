@@ -113,5 +113,10 @@
     "sendPdfToEmail": {
       "title": "Send PDF to email"
     }
+  },
+  "notFound": {
+    "title": "Sorry, we couldn't find this page.",
+    "message": "But don't worry, there are plenty of other things you can find on our homepage.",
+    "goToBack": "Back to homepage"
   }
 }

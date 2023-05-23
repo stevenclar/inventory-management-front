@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
 import { SelectComponent } from './components/select/select.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SelectComponent } from './components/select/select.component';
     ButtonComponent,
     InputComponent,
     SelectComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { SelectComponent } from './components/select/select.component';
     InputComponent,
     SelectComponent,
     ButtonComponent,
+    NotFoundComponent,
   ],
 })
 export class SharedModule {}
